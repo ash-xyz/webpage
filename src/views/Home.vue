@@ -1,8 +1,7 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png" />
-    <!--<HelloWorld msg="Welcome to Your Vue.js App" /> -->
     <!-- https://github.com/matteobruni/tsparticles -->
+    <!-- Could try limegreen for the particle/line colour? 00FF00-->
     <Particles
       id="tsparticles"
       color="#dedede"
@@ -18,7 +17,7 @@
       :moveSpeed="3"
       :hoverEffect="true"
       hoverMode="grab"
-      :clickEffect="true"
+      :clickEffect="false"
       clickMode="push"
     ></Particles>
   </div>
@@ -26,7 +25,6 @@
 
 <script>
 // @ is an alias to /src
-//import HelloWorld from "@/components/HelloWorld.vue";
 import Particles from "particles.vue";
 export default {
   name: "Home",
@@ -36,3 +34,8 @@ export default {
   }
 };
 </script>
+<style>
+.home {
+  background-color: #1e1e1e;
+}
+</style>

@@ -1,16 +1,16 @@
 <template>
   <div class="home">
-    <Particles></Particles>
+    <FrontPage></FrontPage>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import Particles from "@/components/Particles.vue";
+import FrontPage from "@/components/FrontPage.vue";
 export default {
   name: "Home",
   components: {
-    Particles
+    FrontPage
   }
 };
 </script>

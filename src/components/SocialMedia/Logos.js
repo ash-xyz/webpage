@@ -2,14 +2,14 @@ import React from 'react';
 
 import content from '../../config/content';
 const logos = content.logos;
-const { github, linkedin, hackerrank, instagram, twitter, youtube, facebook, externallink } = logos;
+const { github, linkedin, hackerrank, instagram, twitter, youtube, facebook, externallink, email } = logos;
 
 const Logo = ({ logoObj, urlToUse = "" }) => {
 	return (
 		<a href={urlToUse ? urlToUse : logoObj.url} rel="noopener noreferrer" target="_blank" className="no-underline">
-			<div className="logo" style={{width: "2.5rem"}}>
+			<div className="logo" style={{ width: "2.5rem" }}>
 				<svg xmlns="http://www.w3.org/2000/svg" viewBox={logoObj
-			.view_box}>
+					.view_box}>
 					<circle className="logo-circle transition-ease-in" cx="100" cy="100" r="80"></circle>
 					{logoObj.paths.map((path, ind) => (
 						<path key={ind} className="logo-path transition-ease-in" d={path}></path>
@@ -20,6 +20,11 @@ const Logo = ({ logoObj, urlToUse = "" }) => {
 	)
 }
 
+const Email = () => {
+	return (
+		<Logo logoObj={email} />
+	)
+}
 const GitHub = ({ urlToUse }) => {
 	return (
 		<Logo logoObj={github} urlToUse={urlToUse} />
@@ -76,5 +81,6 @@ export {
 	Twitter,
 	Youtube,
 	GitHub,
-	ExternalLinkSymbol
+	ExternalLinkSymbol,
+	Email
 }

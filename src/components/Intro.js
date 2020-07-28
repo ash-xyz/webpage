@@ -1,14 +1,16 @@
 import React from "react";
-import MailTo from "./MailTo";
+//import MailTo from "./MailTo";
 import content from "../config/content";
 import SlideIn from "./universal/SlideIn";
 import PaddingResizer from "./universal/PaddingResizer";
 import ParticlesComponent from "./ParticlesComponent";
+import SocialMedia from "./SocialMedia/SocialMedia"
 
 class Intro extends React.Component {
   render() {
     const intro = content.intro;
-    const { hi, name, short_desc, desc, button_msg } = intro;
+    //Removed , button_msg
+    const { hi, name, short_desc, desc } = intro;
     return (
       <div id="intro">
         {/* <Segment isSegmentInViewport={true} isForceFullScreen={true}> */}
@@ -29,7 +31,8 @@ class Intro extends React.Component {
                 {desc}
               </p>
               <div className="slide-in-bottom delay-125">
-                <MailTo text={button_msg} />
+                {/*<MailTo text={button_msg} />*/}
+                <SocialMedia />
               </div>
             </div>
           </PaddingResizer>

@@ -3,6 +3,7 @@ import MailTo from "./MailTo";
 import content from "../config/content";
 import SlideIn from "./universal/SlideIn";
 import PaddingResizer from "./universal/PaddingResizer";
+import ParticlesComponent from "./ParticlesComponent";
 
 class Intro extends React.Component {
   render() {
@@ -12,6 +13,7 @@ class Intro extends React.Component {
       <div id="intro">
         {/* <Segment isSegmentInViewport={true} isForceFullScreen={true}> */}
         <SlideIn isSegmentInViewport={true}>
+          <ParticlesComponent />
           <PaddingResizer heightOffset={0.3}>
             <div className="w-50-l w-75 center tl">
               <p className="mv0 pv0 slide-in-bottom delay-025 greet font-ubuntu-mono">

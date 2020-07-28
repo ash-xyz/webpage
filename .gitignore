@@ -1,22 +1,33 @@
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# images in assets
+src/assets/logo/chinese-ink-logo-v1/
+src/assets/logo/chinese-ink-logo-v2/
+src/assets/logo/more-western-logo/
+src/assets/logo/old-personal-website-logo/
+
+# ignore netlify directory
+.netlify
+
+# dependencies
+/node_modules
+/.pnp
+.pnp.js
+
+# testing
+/coverage
+
+# production
+/build
+
+# misc
 .DS_Store
-node_modules
-/dist
-
-# local env files
+.env
 .env.local
-.env.*.local
+.env.development.local
+.env.test.local
+.env.production.local
 
-# Log files
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-pnpm-debug.log*
-
-# Editor directories and files
-.idea
-.vscode
-*.suo
-*.ntvs*
-*.njsproj
-*.sln
-*.sw?

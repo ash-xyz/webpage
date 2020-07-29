@@ -78,7 +78,7 @@
 				"keyword.other.operator"
 			],
 			"settings": {
-				"foreground": "#C586C0"
+				"foreground": "#DA4167"
 			}
 		},
 		{
@@ -90,7 +90,7 @@
 				"entity.name.variable"
 			],
 			"settings": {
-				"foreground": "#9CDCFE"
+				"foreground": "#F0EFF4"
 			}
 		},
 		{
@@ -99,7 +99,7 @@
 				"meta.object-literal.key"
 			],
 			"settings": {
-				"foreground": "#9CDCFE"
+				"foreground": "#F0EFF4"
 			}
 		},
 		{

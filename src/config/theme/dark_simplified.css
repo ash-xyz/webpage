@@ -41,13 +41,13 @@ body {
 	background-color: #252526;
 }
 .nav-text-number {
-	color: #C586C0;
+	color: #DA4167;
 }
 .nav-text-dot {
 	color: #D4D4D4;
 }
 .nav-text {
-	color: #9CDCFE;
+	color: #F0EFF4;
 }
 
 
@@ -99,8 +99,8 @@ body {
 
 
 .active-about {
-	border-color: #9CDCFE;
-	color: #9CDCFE;
+	border-color: #F0EFF4;
+	color: #F0EFF4;
 }
 .not-active-about {
 	border-color: #555;
@@ -108,7 +108,7 @@ body {
 }
 .not-active-about:hover {
 	background-color: #252526;
-	color: #9CDCFE;
+	color: #F0EFF4;
 }
 
 
@@ -151,12 +151,12 @@ body {
 	color: #007ACC;
 }
 .employment-company {
-	color: #9CDCFE;
+	color: #F0EFF4;
 }
 
 .active-employment {
-	border-color: #9CDCFE;
-	color: #9CDCFE;
+	border-color: #F0EFF4;
+	color: #F0EFF4;
 }
 .not-active-employment {
 	border-color: #555;
@@ -164,7 +164,7 @@ body {
 }
 .not-active-employment:hover {
 	background-color: #252526;
-	color: #9CDCFE;
+	color: #F0EFF4;
 }
 
 .better-list-style {
@@ -173,7 +173,7 @@ body {
 .better-list-style::before {
 	content: "⊳";
 	position: absolute;
-	color: #9CDCFE;
+	color: #F0EFF4;
 	left: 0px;
 }
 
@@ -202,5 +202,5 @@ body {
 	color: #666;
 }
 .footer:hover {
-	color: #C586C0;
+	color: #DA4167;
 }

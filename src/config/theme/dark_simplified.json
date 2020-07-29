@@ -7,15 +7,15 @@
 		}
 	},
 	"colors": {
-		"code.import_return": "#C586C0",
+		"code.import_return": "#DA4167",
 		"code.comment": "#6A9955",
 		"code.this_self_v1": "#569cd6",
 		"code.this_self_v2": "#000080",
 		"code.keyword": "#569cd6",
 		"code.string": "#ce9178",
-		"code.variable": "#9CDCFE",
+		"code.variable": "#F0EFF4",
 		"code.numeric": "#b5cea8",
-		"code.control_flow": "#C586C0",
+		"code.control_flow": "#DA4167",
 		"code.function": "#DCDCAA",
 		"code.react_components": "#16825D",
 		"code.curvy_brackets": "#D4D4D4",

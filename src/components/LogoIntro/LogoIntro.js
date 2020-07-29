@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 import './LogoIntro.css';
 import styled from 'styled-components';
 
-import imgBS from "../../assets/logo/logo-bs.png";
-// import imgYao from "../assets/logo/logo-yao.png";
+import logoImg from "../../assets/logo/logo.png";
 
 const AnimationContainer = styled.div.attrs({
 	className: `vh-100 flex justify-center items-center`
@@ -37,7 +36,7 @@ class LogoIntro extends Component {
 			<AnimationContainer>
 				<AnimationStage>
 					<img
-						src={imgBS}
+						src={logoImg}
 						className={`anim-object ${isAnimationSlideIn ? "blur-in-bck-center" : "slide-out-bck-center"}`}
 						onAnimationEnd={this.handleAnimationEnd}
 						alt="" />

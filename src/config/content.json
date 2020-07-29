@@ -39,31 +39,33 @@
 	"about": {
 		"section_name": "About me",
 		"descs": [
-			"I'm a Computer Science student at UCD, learning all the nooks and crannies of Computer Science. Currently in my penultimate year, graduating from BSc in Computer Science on September 2021.",
-			"Former Assistant Manager at a fast food restaurant. Former Founder of a game server. Completed courses from Udemy on Full-Stack Web Development, Linux Administration, Machine Learning and Python."
+			"I'm an eager to learn Computer Science Student @ UCD, looking to graduate in 2022",
+			"I spend my free time learning new skills and practicing them through projects.",
+			" This summer I seem to have caught the ML bug and have taken my fair share of MOOC's, including learning the pre-requisite Math (Linear Algebra (MIT 18.06 ❤️), Multivariable Calculus & Probability Theory)."
 		],
 		"tech_desc": "Technologies that I've been working with recently:",
 		"categories": [
-			{
-				"category": "web",
-				"short_name": "Web",
-				"name": "Web Development",
-				"technologies": [
-					"React + Redux",
-					"Node.js + Express.js / Spring Boot",
-					"Redis / MongoDB / PostgresSQL / MySQL / Firebase",
-					"Progressive Web Apps (PWAs)",
-					"GraphQL / RESTful APIs",
-					"Jest",
-					"Webpack2"
-				]
-			},
 			{
 				"category": "ml",
 				"short_name": "ML",
 				"name": "Machine Learning",
 				"technologies": [
-					"Python (matplotlib, pyplot, sklearn, TensorFlow, numpy)"
+					"Libraries: TensorFlow , Matplotlib, Pyplot, Sklearn, Numpy, Pytorch, Pandas",
+					"Convolutional Neural Networks & General Adversarial Neural Networks",
+					"Deep Reinforcement Learning",
+					"Statistical Modelling with R"
+				]
+			},
+			{
+				"category": "web",
+				"short_name": "Web",
+				"name": "Web Development",
+				"technologies": [
+					"HTML",
+					"CSS",
+					"Javascript",
+					"Vue.js",
+					"Spring"
 				]
 			},
 			{
@@ -73,16 +75,7 @@
 				"technologies": [
 					"Python",
 					"BASH",
-					"C"
-				]
-			},
-			{
-				"category": "game",
-				"short_name": "Game",
-				"name": "Game Development",
-				"technologies": [
-					"Python (pygame)",
-					"Java (JavaFX)"
+					"C/C++"
 				]
 			}
 		]
@@ -206,28 +199,28 @@
 	},
 	"logos": {
 		"github": {
-			"url": "https://github.com/bryansng",
+			"url": "https://github.com/ash-xyz/",
 			"view_box": "0 0 200 200",
 			"paths": [
 				"M99.958,55.208c-24.786,0-44.862,20.086-44.862,44.861c0,19.828,12.853,36.636,30.674,42.563 c2.242,0.421,3.064-0.967,3.064-2.159c0-1.065-0.037-3.889-0.055-7.628c-12.479,2.708-15.11-6.016-15.11-6.016 c-2.042-5.178-4.991-6.563-4.991-6.563c-4.064-2.78,0.314-2.727,0.314-2.727c4.504,0.316,6.871,4.623,6.871,4.623 c4,6.86,10.501,4.878,13.066,3.73c0.404-2.9,1.559-4.877,2.841-5.996c-9.963-1.125-20.434-4.983-20.434-22.171 c0-4.898,1.738-8.898,4.616-12.038c-0.503-1.133-2.018-5.695,0.393-11.874c0,0,3.757-1.205,12.338,4.598 c3.588-0.998,7.402-1.491,11.214-1.514c3.813,0.022,7.625,0.516,11.214,1.514c8.524-5.803,12.281-4.598,12.281-4.598 c2.413,6.179,0.898,10.741,0.449,11.874c2.859,3.14,4.599,7.14,4.599,12.038c0,17.233-10.487,21.027-20.467,22.13 c1.568,1.345,3.026,4.099,3.026,8.301c0,6.002-0.054,10.826-0.054,12.283c0,1.178,0.783,2.579,3.082,2.132 c17.949-5.884,30.79-22.707,30.79-42.503C144.818,75.293,124.73,55.208,99.958,55.208"
 			]
 		},
 		"linkedin": {
-			"url": "https://www.linkedin.com/in/bryan-sng/",
+			"url": "https://www.linkedin.com/in/ash-xyz/",
 			"view_box": "0 0 200 200",
 			"paths": [
 				"M128,128.021h-11.779v-18.465c0-4.403-0.092-10.066-6.138-10.066c-6.146,0-7.085,4.791-7.085,9.742v18.789H91.217V90.054 h11.318v5.176h0.152c1.58-2.983,5.426-6.134,11.17-6.134c11.937,0,14.146,7.856,14.146,18.084v20.84H128z M77.911,84.86 c-3.793,0-6.839-3.071-6.839-6.847c0-3.771,3.05-6.837,6.839-6.837c3.78,0,6.841,3.066,6.841,6.837 C84.752,81.789,81.687,84.86,77.911,84.86z M83.817,128.021H72.004V90.054h11.813V128.021z M133.894,60.218H66.088 c-3.243,0-5.87,2.566-5.87,5.731v68.1c0,3.167,2.627,5.731,5.87,5.731h67.799c3.241,0,5.895-2.564,5.895-5.731v-68.1 c0-3.166-2.653-5.731-5.895-5.731H133.894z"
 			]
 		},
 		"hackerrank": {
-			"url": "https://www.hackerrank.com/bryan_sng",
+			"url": "",
 			"view_box": "0 0 200 200",
 			"paths": [
 				"M112.759,71.088c-0.781,0-1.433,0.64-1.433,1.435v21.544H88.675V71.694h3.898c0.784,0,1.412-0.638,1.412-1.434 c0-0.523-0.273-0.979-0.684-1.229l-8.74-8.39c-0.273-0.351-0.784-0.606-1.257-0.606c-0.467,0-0.889,0.25-1.15,0.595l-9.341,8.407 c-0.4,0.25-0.667,0.7-0.667,1.212c0,0.794,0.629,1.435,1.418,1.435h3.913l0.045,55.792c0,0.805,0.618,1.436,1.412,1.436h8.295 c0.789,0,1.44-0.641,1.44-1.424v-22.262h22.646v23.084h-3.888c-0.794,0-1.423,0.639-1.423,1.436c0,0.508,0.268,0.969,0.662,1.219 l8.777,8.395c0.245,0.338,0.785,0.605,1.254,0.605c0.472,0,0.882-0.25,1.154-0.605l9.337-8.395c0.399-0.25,0.666-0.711,0.666-1.219 c0-0.797-0.638-1.436-1.418-1.436h-3.913l-0.039-55.787c0-0.806-0.635-1.446-1.418-1.446h-8.309V71.088z"
 			]
 		},
 		"instagram": {
-			"url": "https://www.instagram.com/bryan_sng/",
+			"url": "",
 			"view_box": "0 0 200 200",
 			"paths": [
 				"M100 62.2c5.1.1 10.1.1 15.2.3 4.4.1 8.7.9 12.6 3.3 5 3.1 8 7.6 9 13.3.6 3.4.8 6.9.8 10.4.1 7.5.1 14.9 0 22.4 0 3.9-.2 7.9-1.5 11.7-2.5 7.3-7.7 11.8-15.2 13.2-3.4.7-6.9.8-10.4.9-7.5.1-15 .1-22.5 0-3.9 0-7.8-.2-11.6-1.5-7.4-2.5-11.8-7.7-13.3-15.3-.6-3.4-.8-6.9-.8-10.4-.1-7.5-.1-14.9 0-22.4 0-3.9.2-7.9 1.5-11.7 2.5-7.3 7.7-11.8 15.2-13.2 3.4-.7 6.9-.7 10.4-.9 3.5-.1 7 0 10.6 0v-.1zM69 99.4h.1c0 3.4-.1 6.7 0 10.1.1 2.9.2 5.8.5 8.7.6 6.3 4.4 10.7 10.6 11.9 3.4.6 6.9.7 10.3.8 6.3.1 12.5.1 18.8 0 3.3-.1 6.6-.2 9.8-.7 5.4-.8 9.2-4 10.7-9.4.6-2.1.8-4.2.9-6.4.2-6.4.2-12.7.2-19.1 0-4.5-.1-9-.5-13.5-.6-6.3-4.4-10.7-10.7-11.9-3.4-.6-6.9-.7-10.3-.8-6.2-.1-12.4-.1-18.7 0-2.9 0-5.9.2-8.8.5-3.8.4-7.2 1.9-9.6 5.1-1.9 2.6-2.7 5.5-2.9 8.6-.2 5.4-.3 10.8-.4 16.1z",

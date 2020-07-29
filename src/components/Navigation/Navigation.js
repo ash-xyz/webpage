@@ -2,9 +2,8 @@ import React, { Component } from "react";
 import "./Navigation.css";
 import content from "../../config/content";
 
-import imgBS from "../../assets/logo/logo-bs.png";
+import logoImg from "../../assets/logo/logo.svg";
 import SlideIn from "../universal/SlideIn";
-// import imgYao from "../assets/logo/logo-yao.png";
 
 class Navigation extends Component {
   constructor() {
@@ -102,7 +101,7 @@ class Navigation extends Component {
                     className="link dib no-underline dim-090 transition-ease-in"
                   >
                     <img
-                      src={imgBS}
+                      src={logoImg}
                       className="v-btm"
                       style={{ width: "3rem" }}
                       alt="Logo"

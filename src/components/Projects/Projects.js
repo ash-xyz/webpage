@@ -1,5 +1,4 @@
 import React from "react";
-import Repos from "./Repos/Repos";
 import { TabContent } from "../Navigation/Navigation";
 import content from "../../config/content";
 import SlideIn from "../universal/SlideIn";
@@ -21,7 +20,7 @@ export default class Projects extends React.Component {
                   isLink={false}
                 />
               </div>
-              <Repos />
+              Coming Soon
             </div>
           </PaddingResizer>
         </SlideIn>

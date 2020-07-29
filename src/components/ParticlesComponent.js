@@ -7,9 +7,9 @@ export default () => (
             id="tsparticles"
             style={{
                 position: "absolute",
-                width: "100%",
-                height: "100%"
             }}
+            width="100wh"
+            height="100vh"
             options={{
                 fpsLimit: 60,
                 particles: {

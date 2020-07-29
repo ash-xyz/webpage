@@ -18,7 +18,7 @@ src/assets/logo/old-personal-website-logo/
 /coverage
 
 # production
-/build
+#/build
 
 # misc
 .DS_Store

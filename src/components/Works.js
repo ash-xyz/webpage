@@ -37,7 +37,7 @@ class Works extends React.Component {
                 />
               </div>
               <div className="flex flex-row-l flex-column flex-nowrap justify-around tl">
-                <div className="w-25-l pv0-l pt3 pb4">
+                {/*<div className="w-25-l pv0-l pt3 pb4">
                   <CompaniesName
                     employments={employments}
                     employmentIDToShow={employment_id_to_show}
@@ -56,7 +56,8 @@ class Works extends React.Component {
                       <EmploymentDesc employment={employment} />
                     </TransitionComponent>
                   ))}
-                </div>
+                  </div>*/}
+                  Coming Soon
               </div>
             </div>
           </PaddingResizer>
@@ -79,7 +80,7 @@ class CompaniesName extends React.Component {
               ind === employmentIDToShow
                 ? "active-employment"
                 : "not-active-employment"
-            }`}
+              }`}
           >
             {employment.company}
           </div>
@@ -100,7 +101,7 @@ const RoleCompany = ({ employment }) => {
     finalizedCompanyName.push(
       <span key={count}>
         {count === 1 ||
-        (count > 0 && count < Object.keys(companiesInfo).length - 1)
+          (count > 0 && count < Object.keys(companiesInfo).length - 1)
           ? " and "
           : ""}
         <a
@@ -136,7 +137,7 @@ const DateOfService = ({ employment }) => {
         end_date === null
           ? "Present"
           : end_date.toLocaleString("en-US", date_options)
-      }`}
+        }`}
     </h4>
   );
 };

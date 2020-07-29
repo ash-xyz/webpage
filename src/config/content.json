@@ -27,7 +27,7 @@
 				"url": "#projects"
 			},
 			{
-				"name": "Experiences",
+				"name": "Interests",
 				"url": "#works"
 			},
 			{
@@ -123,19 +123,19 @@
 		}
 	},
 	"works": {
-		"section_name": "Experiences",
+		"section_name": "Interests",
 		"employments": [
 			{
 				"job_id": 0,
-				"company": "EternalzCraft Minecraft Server",
+				"company": "Books",
 				"companies_info": {
 					"ec": {
-						"name": "EternalzCraft Minecraft Server",
-						"url": "https://www.facebook.com/eternalzcraftminecraftserver/",
-						"url_desc": "EternalzCraft Facebook Page"
+						"name": "Books",
+						"url": "",
+						"url_desc": ""
 					}
 				},
-				"role": "Founder",
+				"role": "",
 				"start_date": {
 					"year": 2013,
 					"month": 7

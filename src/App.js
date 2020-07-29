@@ -9,7 +9,7 @@ import Intro from "./components/Intro";
 import About from "./components/About";
 import Projects from "./components/Projects/Projects";
 import Works from "./components/Works";
-import Contact from "./components/Contact";
+import Blog from "./components/Blog";
 import Footer from "./components/Footer";
 const { settings } = content;
 
@@ -32,25 +32,25 @@ class App extends React.Component {
       about: 1,
       projects: 2,
       works: 3,
-      contact: 4
+      blog: 4
     };
     const components = {
       intro: <Intro />,
       about: <About />,
       projects: <Projects />,
       works: <Works />,
-      contact: <Contact />
+      blog: <Blog />
     };
 
     for (let name in components) {
       finalizedComponents.push(
         <div key={name} className={`order-${orders[name]}`}>
           {// Pass component's order to the component.
-          // We clone it first then pass the prop.
-          // https://stackoverflow.com/questions/32370994/how-to-pass-props-to-this-props-children
-          React.cloneElement(components[name], {
-            componentOrder: orders[name]
-          })}
+            // We clone it first then pass the prop.
+            // https://stackoverflow.com/questions/32370994/how-to-pass-props-to-this-props-children
+            React.cloneElement(components[name], {
+              componentOrder: orders[name]
+            })}
         </div>
       );
     }
@@ -69,8 +69,8 @@ class App extends React.Component {
         </div>
       </div>
     ) : (
-      <LogoIntro showContent={this.showContent} />
-    );
+        <LogoIntro showContent={this.showContent} />
+      );
   }
 }
 

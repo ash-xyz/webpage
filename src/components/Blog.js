@@ -10,13 +10,17 @@ class Blog extends React.Component {
       <div id="blog">
         <SlideIn>
           <PaddingResizer>
-            <div className="w-50-l w-90 center tc slide-in-bottom">
-              <TabContent
-                index={componentOrder}
-                content="Blog"
-                isLink={false}
-              />
-              <h2 className="f2 title">Coming Soon!</h2>
+            <div className="w-two-thirds-l w-75 center tc">
+              <div className="pv3">
+                <TabContent
+                  index={componentOrder}
+                  content="Blog"
+                  isLink={false}
+                />
+              </div>
+              <div className="flex flex-row-l flex-column flex-nowrap justify-around tl">
+                Coming Soon
+              </div>
             </div>
           </PaddingResizer>
         </SlideIn>

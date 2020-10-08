@@ -1,21 +1,28 @@
 import React from "react";
-//import MailTo from "./MailTo";
+import MailTo from "./MailTo";
 import content from "../config/content";
 import SlideIn from "./universal/SlideIn";
 import PaddingResizer from "./universal/PaddingResizer";
-import ParticlesComponent from "./ParticlesComponent";
+import Particles from "react-tsparticles";
+import particlesOptions from "./particles.json";
 import SocialMedia from "./SocialMedia/SocialMedia"
 
 class Intro extends React.Component {
   render() {
     const intro = content.intro;
     //Removed , button_msg
-    const { hi, name, short_desc, desc } = intro;
+    const { hi, name, short_desc, desc, button_msg } = intro;
     return (
       <div id="intro">
         {/* <Segment isSegmentInViewport={true} isForceFullScreen={true}> */}
         <SlideIn isSegmentInViewport={true}>
-          <ParticlesComponent />
+          <Particles id="tsparticles"
+            style={{
+              position: "absolute",
+            }}
+            width="100wh"
+            height="100vh"
+            options={particlesOptions} />
           <PaddingResizer heightOffset={0.3}>
             <div className="w-50-l w-75 center tl">
               <p className="mv0 pv0 slide-in-bottom delay-025 greet font-ubuntu-mono">
@@ -31,8 +38,10 @@ class Intro extends React.Component {
                 {desc}
               </p>
               <div className="slide-in-bottom delay-125">
-                {/*<MailTo text={button_msg} />*/}
                 <SocialMedia />
+              </div>
+              <div className="slide-in-bottom delay-150">
+                <MailTo text={button_msg} />
               </div>
             </div>
           </PaddingResizer>

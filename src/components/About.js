@@ -1,7 +1,7 @@
 import React from "react";
 import content from "../config/content";
 import { TabContent } from "./Navigation/Navigation";
-import imgMe from "../assets/me/me.png";
+import imgMe from "../assets/me/me.jpg";
 import SlideIn from "./universal/SlideIn";
 import PaddingResizer from "./universal/PaddingResizer";
 // import imgYao from "../assets/me/yao-mulan.jpg";

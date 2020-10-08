@@ -10,10 +10,9 @@ export default class SocialMedia extends React.Component {
         isAnimationSlideIn={false}
         animationDelayClass="delay-150"
       >
-        <div className="justify-center align-center">
+        <div className="pa4-l pa3 fixed-l left-0-l bottom-0-l flex flex-column-l flex-row flex-nowrap justify-center align-center">
           <GitHub />
           <LinkedIn />
-          <Email />
         </div>
       </SlideIn>
     );

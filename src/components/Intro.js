@@ -5,7 +5,6 @@ import SlideIn from "./universal/SlideIn";
 import PaddingResizer from "./universal/PaddingResizer";
 import Particles from "react-tsparticles";
 import particlesOptions from "./particles.json";
-import SocialMedia from "./SocialMedia/SocialMedia"
 
 class Intro extends React.Component {
   render() {
@@ -37,9 +36,6 @@ class Intro extends React.Component {
               <p className="pv3 lh-copy slide-in-bottom delay-100 paragraph">
                 {desc}
               </p>
-              <div className="slide-in-bottom delay-125">
-                <SocialMedia />
-              </div>
               <div className="slide-in-bottom delay-150">
                 <MailTo text={button_msg} />
               </div>

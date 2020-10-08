@@ -20,11 +20,6 @@ const Logo = ({ logoObj, urlToUse = "" }) => {
 	)
 }
 
-const Email = () => {
-	return (
-		<Logo logoObj={email} />
-	)
-}
 const GitHub = ({ urlToUse }) => {
 	return (
 		<Logo logoObj={github} urlToUse={urlToUse} />
@@ -81,6 +76,5 @@ export {
 	Twitter,
 	Youtube,
 	GitHub,
-	ExternalLinkSymbol,
-	Email
+	ExternalLinkSymbol
 }

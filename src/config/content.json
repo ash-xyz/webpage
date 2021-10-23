@@ -8,9 +8,9 @@
 	"intro": {
 		"section_name": "Introduction",
 		"hi": "مرحباً, my name is",
-		"name": "Ashraf Ali.",
+		"name": "Ash Ali.",
 		"short_desc": "Computer Science @UCD",
-		"desc": "I'm a Software Engineer based in Dublin, Ireland. Currently studying as much as I can from the field. At the moment, I specialize in machine learning and deep learning.",
+		"desc": "I'm a Software Engineer based in Dublin, Ireland. I organize CS related events for my University. In my spare time, I like to learn new skills, contribute to Open-Source and create new projects.",
 		"button_msg": "Get in Touch"
 	},
 	"navigation": {
@@ -39,9 +39,9 @@
 	"about": {
 		"section_name": "About me",
 		"descs": [
-			"I'm an eager to learn Computer Science Student @ UCD, looking to graduate in 2022",
+			"I'm an eager to learn Computer Science Student @ UCD.",
 			"I spend my free time learning new skills and practicing them through projects.",
-			" This summer I seem to have caught the ML bug and have taken my fair share of MOOC's, including learning the pre-requisite Math (Linear Algebra (MIT 18.06 ❤️), Multivariable Calculus & Probability Theory)."
+			"👀"
 		],
 		"tech_desc": "Technologies that I've been working with recently:",
 		"categories": [
@@ -50,10 +50,9 @@
 				"short_name": "ML",
 				"name": "Machine Learning",
 				"technologies": [
-					"Libraries: TensorFlow , Matplotlib, Pyplot, Sklearn, Numpy, Pytorch, Pandas",
+					"Libraries: Pytorch, Sklearn, Matplotlib, Pyplot, Numpy, Pandas",
 					"Convolutional Neural Networks & General Adversarial Neural Networks",
-					"Deep Reinforcement Learning",
-					"Statistical Modelling with R"
+					"Deep Reinforcement Learning"
 				]
 			},
 			{
@@ -61,21 +60,9 @@
 				"short_name": "Web",
 				"name": "Web Development",
 				"technologies": [
-					"HTML",
-					"CSS",
-					"Javascript",
-					"Vue.js",
-					"Spring"
-				]
-			},
-			{
-				"category": "unix",
-				"short_name": "Unix",
-				"name": "Unix Programming",
-				"technologies": [
-					"Python",
-					"BASH",
-					"C/C++"
+					"React",
+					"Kotlin",
+					"Java"
 				]
 			}
 		]

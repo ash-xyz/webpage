@@ -2,6 +2,7 @@ import type { NextPage } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
 import Container from '../components/container'
+import cn from 'classnames'
 
 const Home: NextPage = () => {
   return (
@@ -22,7 +23,7 @@ const Home: NextPage = () => {
               Incoming Stripe Intern.
             </p>
           </div>
-          <div className="w-[80px] sm:w-[176px] relative mb-8 sm:mb-0 mr-auto">
+          <div className="w-[80px] sm:w-[176px] relative mb-8 sm:mb-0 mr-auto ">
             <Image
               alt="Ash Ali"
               height={176}

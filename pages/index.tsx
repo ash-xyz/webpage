@@ -2,6 +2,7 @@ import type { NextPage } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
 import Container from '../components/container'
+import Tilt from 'react-tilt'
 import cn from 'classnames'
 
 const Home: NextPage = () => {
@@ -18,12 +19,12 @@ const Home: NextPage = () => {
               <span className="font-semibold">Netsoc</span>
             </h2>
             <p className="text-gray-600 dark:text-gray-400 mb-16">
-              CS student at University College Dublin. 
+              CS student at University College Dublin.
               Busy learning about manipulation, running Netsoc & watching TV.
               Incoming Stripe Intern.
             </p>
           </div>
-          <div className="w-[80px] sm:w-[176px] relative mb-8 sm:mb-0 mr-auto ">
+          <Tilt className="w-[80px] sm:w-[176px] relative mb-8 sm:mb-0 mr-auto ">
             <Image
               alt="Ash Ali"
               height={176}
@@ -31,7 +32,7 @@ const Home: NextPage = () => {
               src="/me.jpg"
               className="rounded-full"
             />
-          </div>
+          </Tilt>
         </div>
       </div>
     </Container>

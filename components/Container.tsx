@@ -3,6 +3,7 @@ import { useRouter } from 'next/router';
 import { useState, useEffect } from 'react';
 import { useTheme } from 'next-themes';
 import NextLink from 'next/link'
+import Footer from '../components/Footer'
 import cn from 'classnames';
 
 function NavItem({ href, text }: { href: string, text: string }) {
@@ -86,6 +87,7 @@ export default function Container(props: any) {
                 className="flex flex-col justify-center px-8 bg-gray-50 dark:bg-gray-900"
             >
                 {children}
+                <Footer />
             </main>
         </div>
     )

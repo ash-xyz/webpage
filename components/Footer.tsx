@@ -17,7 +17,7 @@ export default function Footer() {
             <hr className="w-full border-1 border-gray-200 dark:border-gray-800 mb-8" />
             <div className="w-full border-gray-200 text-center">
                 <ExternalLink href="mailto:ashraf.ali@ucdconnect.ie">ashraf.ali@ucdconnect.ie</ExternalLink>
-                <p className="leading-normal my-5">
+                <p className="leading-normal my-5 text-gray-600 dark:text-gray-400">
                     Mullingar,
                     <br />
                     WestMeath, Ireland

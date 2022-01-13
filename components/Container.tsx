@@ -45,6 +45,7 @@ export default function Container(props: any) {
                         <NavItem href="/" text="Home" />
                         <NavItem href="/dashboard" text="Dashboard" />
                         <NavItem href="/blog" text="Blog" />
+                        <NavItem href="/controversial" text="Controversial Thoughts" />
                     </div>
                     <button
                         aria-label="Toggle Dark Mode"

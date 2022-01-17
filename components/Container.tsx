@@ -5,6 +5,7 @@ import { useTheme } from 'next-themes';
 import NextLink from 'next/link'
 import Footer from '../components/Footer'
 import cn from 'classnames';
+import MobileMenu from './MobileMenu';
 
 function NavItem({ href, text }: { href: string, text: string }) {
     const router = useRouter();
@@ -42,10 +43,10 @@ export default function Container(props: any) {
                         Skip to content
                     </a>
                     <div className="ml-[-0.60rem]">
+                        <MobileMenu />
                         <NavItem href="/" text="Home" />
                         <NavItem href="/dashboard" text="Dashboard" />
                         <NavItem href="/blog" text="Blog" />
-                        <NavItem href="/controversial" text="Controversial Thoughts" />
                     </div>
                     <button
                         aria-label="Toggle Dark Mode"

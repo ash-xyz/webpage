@@ -1,7 +1,7 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
-import Container from '../components/container'
+import Container from '../components/Container'
 import Tilt from 'react-tilt'
 import cn from 'classnames'
 

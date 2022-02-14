@@ -2,7 +2,6 @@ import type { NextPage } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
 import Container from '../components/Container'
-import Tilt from 'react-tilt'
 import cn from 'classnames'
 
 const Home: NextPage = () => {
@@ -24,7 +23,7 @@ const Home: NextPage = () => {
               Incoming Stripe Intern.
             </p>
           </div>
-          <Tilt className="w-[180px] sm:w-[400px] relative mb-8 sm:mb-0 mr-auto ">
+          <div className="w-[180px] sm:w-[400px] relative mb-8 sm:mb-0 mr-auto ">
             <div className=" rounded-full w-full bg-gradient-to-r p-1 from-[#6EE7B7] via-[#3B82F6] to-[#9333EA]">
               <div className="flex flex-col justify-between h-full bg-gray-200 dark:bg-gray-900 rounded-full p-1">
                 <Image
@@ -36,7 +35,7 @@ const Home: NextPage = () => {
                 />
               </div>
             </div>
-          </Tilt>
+          </div>
         </div>
       </div>
     </Container>

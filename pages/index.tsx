@@ -14,12 +14,12 @@ const Home: NextPage = () => {
               Ashraf Ali
             </h1>
             <h2 className="text-gray-700 dark:text-gray-200 mb-4">
-              President of UCD {' '}
-              <span className="font-semibold">Netsoc</span>
+              Interning @ {' '}
+              <span className="font-semibold"><a href="https://stripe.com/en-ie">Stripe</a></span>
             </h2>
             <p className="text-gray-600 dark:text-gray-400 mb-16">
               CS student at University College Dublin.
-              Busy learning about security, running Netsoc & developing a music taste. <br />
+              Busy learning about security, running UCD Netsoc & developing a music taste. <br />
               Currently interning on Stripe&apos;s Secure Frameworks team.
             </p>
           </div>

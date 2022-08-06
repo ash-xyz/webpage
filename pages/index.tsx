@@ -20,7 +20,7 @@ const Home: NextPage = () => {
             <p className="text-gray-600 dark:text-gray-400 mb-16">
               CS student at University College Dublin.
               Busy learning about security, running Netsoc & developing a music taste. <br />
-              Currently interning on Stripe's Secure Frameworks team.
+              Currently interning on Stripe&apos;s Secure Frameworks team.
             </p>
           </div>
           <div className="w-[180px] sm:w-[400px] relative mb-8 sm:mb-0 mr-auto ">

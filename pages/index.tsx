@@ -14,13 +14,13 @@ const Home: NextPage = () => {
               Ashraf Ali
             </h1>
             <h2 className="text-gray-700 dark:text-gray-200 mb-4">
-              Interning @ {' '}
-              <span className="font-semibold"><a href="https://stripe.com/en-ie">Stripe</a></span>
+              Studying @ {' '}
+              <span className="font-semibold"><a href="https://www.ucd.ie/">UCD</a></span>
             </h2>
             <p className="text-gray-600 dark:text-gray-400 mb-16">
               CS student at University College Dublin.
               Busy learning about graphs, running UCD Netsoc & developing a music taste. <br />
-              Previously interned at Stripe.
+              Previously interned at <span className="font-semibold"><a href="https://stripe.com/en-ie">UCD</a></span>.
             </p>
           </div>
           <div className="w-[180px] sm:w-[400px] relative mb-8 sm:mb-0 mr-auto ">

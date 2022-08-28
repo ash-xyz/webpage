@@ -20,7 +20,7 @@ const Home: NextPage = () => {
             <p className="text-gray-600 dark:text-gray-400 mb-16">
               CS student at University College Dublin.
               Busy learning about graphs, running UCD Netsoc & developing a music taste. <br />
-              Previously interned at <span className="font-semibold"><a href="https://stripe.com/en-ie">UCD</a></span>.
+              Previously interned at <span className="font-semibold"><a href="https://stripe.com/en-ie">Stripe</a></span>.
             </p>
           </div>
           <div className="w-[180px] sm:w-[400px] relative mb-8 sm:mb-0 mr-auto ">

@@ -5,4 +5,4 @@ tags:
 date: 2023-09-14
 ---
 
-Currently working on this website - pop back soon? 👀
+Currently working on configuring my website to use Quartz. Mind popping back soon? 👀

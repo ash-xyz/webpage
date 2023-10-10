@@ -1,1 +1,1 @@
-{"index":{"title":"About Me","links":[],"tags":["about-me"],"content":"Currently working on configuring my website to use Quartz. Mind popping back soon? 👀\nfunc main() {\n    fmt.Println(&quot;Hey there!&quot;)\n}"}}
+{"index":{"title":"About Me","links":[],"tags":["about-me"],"content":"\nHi, I’m a Software Engineer at Stripe. More to come soon!\nfunc main() {\n    fmt.Println(&quot;Hey there!&quot;)\n}"}}

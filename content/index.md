@@ -4,9 +4,9 @@ tags:
     - about-me
 date: 2023-09-14
 ---
+<img src="./banner.svg" width="701" height="183">
 
-Currently working on configuring my website to use Quartz. Mind popping back soon? 👀
-
+Hi, I'm a Software Engineer at [Stripe](https://stripe.com). More to come soon!
 
 ```go
 func main() {

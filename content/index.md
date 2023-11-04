@@ -9,7 +9,7 @@ date: 2023-09-14
 
 Hey - I'm Ash and I'm passionate about solving problems and building things.
 
-In that spirit, I want to create software that feels light and intuitive, and that brings joy to the people who use it(however small).
+In that spirit, I want to create software that feels light and intuitive, and that brings joy to the people who use it(however little).
 
 In the past, I was 
 * a Student at [UCD](https://www.ucd.ie),

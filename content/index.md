@@ -27,7 +27,6 @@ Feel free to reach out on [contact@ash.xyz](email:contact@ash.xyz)
 
 ```go
 func main() {
-	fmt.Println("Hey there, looks like you made it through my yapping.",
-		"Thanks! 👊🏾")
+	fmt.Println("Gopher supremacy!")
 }
 ```

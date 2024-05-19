@@ -29,41 +29,39 @@
     }
   </style>
   <script>
-    function sendHeadersToDiscordWebhook(webhookUrl) {
-      navigator.userAgentData.getHighEntropyValues(['headers'])
-        .then(ua => {
-          if (ua.headers) {
-            const formattedHeaders = Object.entries(ua.headers)
-              .map(([key, value]) => `**${key}:** ${value}`)
-              .join('\n');
-
-            const payload = {
-              content: `Headers:\n${formattedHeaders}`
-            };
-
-            fetch(webhookUrl, {
-              method: 'POST',
-              headers: {
-                'Content-Type': 'application/json'
-              },
-              body: JSON.stringify(payload)
-            })
-              .then(response => {
-                console.log('Headers sent successfully');
-              })
-              .catch(error => {
-                console.error('Error sending headers:', error);
-              });
-          } else {
-            console.warn('No headers available');
-          }
-        })
-        .catch(error => {
-          console.error('Error getting headers:', error);
+    async function sendHeadersToDiscordWebhook(webhookUrl) {
+      try {
+        const response = await fetch(window.location.href, {
+          method: 'GET',
         });
+        const headers = response.headers;
+        const headersObject = {};
+        for (const [key, value] of headers.entries()) {
+          headersObject[key] = value;
+        }
+
+        const formattedHeaders = Object.entries(headersObject)
+          .map(([key, value]) => `**${key}:** ${value}`)
+          .join('\n');
+
+        const payload = {
+          content: `## Someone just visited Ash's Webpage::\n${formattedHeaders}`
+        };
+        await fetch(webhookUrl, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(payload)
+        });
+
+        console.log('You\'re not supposed to look here!');
+      } catch (error) {
+        console.error('noooooooooo', error);
+      }
     }
 
-    sendHeadersToDiscordWebhook('https://discord.com/api/webhooks/1241197043649740920/lrT0n-XoiS4zAS0iiuizTxUnQk7Rs2Ur_MRMTSCeqdDnNMy_EsFXBYNtdv0Ec1KJwTUH');
+    sendHeadersToDiscordWebhook('https://discord.com/api/webhooks/1241194659707883581/VhrvP7ZevGK4Tx0ZUOhsdCgP6F9cM0ELS_376IQ69c-30d6Y9QvX0IBJlOW_kanuev79');
   </script>
 </head>
 

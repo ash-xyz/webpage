@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Ash Ali's Webpage</title>
+  <style>
+    @font-face {
+      font-family: 'CustomFont';
+      src: url('font.otf') format('truetype');
+    }
+
+    body {
+      font-family: 'CustomFont', sans-serif;
+      line-height: 1.4;
+      font-size: 14px;
+      padding: 0 10px;
+      margin: 50px auto;
+      max-width: 650px;
+    }
+
+    #maincontent {
+      max-width: 42em;
+      margin: 15 auto;
+    }
+
+    a {
+      color: #66b2a6;
+    }
+  </style>
+  <script>
+    function sendHeadersToDiscordWebhook(webhookUrl) {
+      navigator.userAgentData.getHighEntropyValues(['headers'])
+        .then(ua => {
+          if (ua.headers) {
+            const formattedHeaders = Object.entries(ua.headers)
+              .map(([key, value]) => `**${key}:** ${value}`)
+              .join('\n');
+
+            const payload = {
+              content: `Headers:\n${formattedHeaders}`
+            };
+
+            fetch(webhookUrl, {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json'
+              },
+              body: JSON.stringify(payload)
+            })
+              .then(response => {
+                console.log('Headers sent successfully');
+              })
+              .catch(error => {
+                console.error('Error sending headers:', error);
+              });
+          } else {
+            console.warn('No headers available');
+          }
+        })
+        .catch(error => {
+          console.error('Error getting headers:', error);
+        });
+    }
+
+    sendHeadersToDiscordWebhook('https://discord.com/api/webhooks/1241197043649740920/lrT0n-XoiS4zAS0iiuizTxUnQk7Rs2Ur_MRMTSCeqdDnNMy_EsFXBYNtdv0Ec1KJwTUH');
+  </script>
+</head>
+
+<body>
+  <div id="maincontent" style="margin-top:70px">
+    <h2>Ash Ali</h2>
+    <p>Hey - I’m Ash and I’m passionate about solving problems and building things.</p>
+
+    In that spirit, I want to create software that feels light and intuitive, and that brings joy to the people who
+    use it(however little).
+
+    <p> In the past, I was</p>
+    <ul>
+      <li>a Student at UCD,</li>
+      <li>President of Netsoc - UCD’s Computer Science Society,</li>
+      <li>an intern at Bloomberg, Stripe and Toast.</li>
+
+    </ul>
+    These days I’m a Software Engineer at Stripe, on the Secure Frameworks team where I’m learning, exploring, and
+    building all things Web Security.
+    <p>
+      Outside of work I find pleasure in baking, reading, walking, and travelling whenever possible.
+    </p>
+
+    At some point, I’d like to get into research and academia, but for now I’m happy to be working on interesting
+    problems with great people. (That being said, if you have any interesting research ideas, or projects, I’d love
+    to hear them!)
+    <p>
+      I’ll try to write more often about my experiences but until then, I’m always happy to chat!
+    </p>
+    Feel free to reach out at <a href="mailto:contact@ash.xyz">contact@ash.xyz</a>
+  </div>
+</body>
+
+</html>

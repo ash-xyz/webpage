@@ -12,7 +12,7 @@ import (
 const DISCORD_WEBHOOK = "https://discord.com/api/webhooks/1241197043649740920/lrT0n-XoiS4zAS0iiuizTxUnQk7Rs2Ur_MRMTSCeqdDnNMy_EsFXBYNtdv0Ec1KJwTUH"
 
 func Handler(w http.ResponseWriter, r *http.Request) {
-	fs := http.FileServer(http.Dir("./static"))
+	fs := http.FileServer(http.Dir("../static"))
 	wrapper(fs).ServeHTTP(w, r)
 }
 

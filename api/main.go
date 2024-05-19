@@ -11,7 +11,12 @@ import (
 
 const DISCORD_WEBHOOK = "https://discord.com/api/webhooks/1241197043649740920/lrT0n-XoiS4zAS0iiuizTxUnQk7Rs2Ur_MRMTSCeqdDnNMy_EsFXBYNtdv0Ec1KJwTUH"
 
-func Wrapper(next http.Handler) http.Handler {
+func Handler(w http.ResponseWriter, r *http.Request) {
+	fs := http.FileServer(http.Dir("../static"))
+	wrapper(fs).ServeHTTP(w, r)
+}
+
+func wrapper(next http.Handler) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		// Get request headers
 		headers := r.Header
@@ -61,6 +66,7 @@ func sendToDiscordWebhook(message string) {
 }
 
 func main() {
-	http.Handle("/", Wrapper(http.FileServer(http.Dir("../static"))))
+	//For local development
+	http.Handle("/", wrapper(http.FileServer(http.Dir("../static"))))
 	http.ListenAndServe(":3000", nil)
 }

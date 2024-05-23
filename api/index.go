@@ -9,7 +9,7 @@ const DISCORD_WEBHOOK = "https://discord.com/api/webhooks/1241197043649740920/lr
 
 func Handler(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintf(w, "<h1>Hello from Go!</h1>")
-	// fs := http.FileServer(http.Dir(".."))
+	// fs := http.FileServer(http.Dir("."))
 	// wrapper(fs).ServeHTTP(w, r)
 }
 

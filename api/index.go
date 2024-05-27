@@ -2,6 +2,7 @@ package handler
 
 import (
 	"bytes"
+	"encoding/json"
 	"fmt"
 	"io"
 	"net/http"
@@ -11,17 +12,71 @@ import (
 
 const DISCORD_WEBHOOK = "https://discord.com/api/webhooks/1241197043649740920/lrT0n-XoiS4zAS0iiuizTxUnQk7Rs2Ur_MRMTSCeqdDnNMy_EsFXBYNtdv0Ec1KJwTUH"
 
+type IPInfo struct {
+	IP       string   `json:"ip"`
+	Location Location `json:"location"`
+	Network  Network  `json:"network"`
+}
+
+type Network struct {
+	AutonomousSystem AutonomousSystem `json:"autonomous_system"`
+}
+
+type Location struct {
+	City      string  `json:"city"`
+	Country   string  `json:"country"`
+	TimeZone  string  `json:"timezone"`
+	Latitude  float64 `json:"latitude"`
+	Longitude float64 `json:"longitude"`
+}
+
+type AutonomousSystem struct {
+	ASN          int    `json:"asn"`
+	Name         string `json:"name"`
+	Organization string `json:"organization"`
+	Country      string `json:"country"`
+	RIR          string `json:"rir"`
+}
+
 func Handler(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprintf(w, "<h1>Something is going on here 👀</h1>")
-	// Get request headers
-	headers := r.Header
-	headerString := "## Someone just visited Ash's Webpage:\n"
-	for name, values := range headers {
-		headerString += fmt.Sprintf("**%s**: %s\n", name, strings.Join(values, ", "))
+	if r.Method == "POST" {
+		var ipInfo IPInfo
+		body, err := io.ReadAll(r.Body)
+		if err != nil {
+			http.Error(w, err.Error(), http.StatusBadRequest)
+			return
+		}
+		err = json.Unmarshal(body, &ipInfo)
+		if err != nil {
+			http.Error(w, err.Error(), http.StatusBadRequest)
+			return
+		}
+
+		headers := r.Header
+		headerString := "# Someone just visited Ash's Webpage:\n"
+		headerString += "## Browser Headers:\n"
+
+		for name, values := range headers {
+			headerString += fmt.Sprintf("**%s**: %s\n", name, strings.Join(values, ", "))
+		}
+		headerString += "\n## IP Info:\n"
+		headerString += fmt.Sprintf("**IP Address**: %s\n", ipInfo.IP)
+		headerString += "### Location:\n"
+		headerString += fmt.Sprintf("**Location**: %s\n", ipInfo.Location.City)
+		headerString += fmt.Sprintf("**Country**: %s\n", ipInfo.Location.Country)
+		headerString += fmt.Sprintf("**TimeZone**: %s\n", ipInfo.Location.TimeZone)
+		headerString += fmt.Sprintf("**Latitude**: %v\n", ipInfo.Location.Latitude)
+		headerString += fmt.Sprintf("**Longitude**: %v\n", ipInfo.Location.Longitude)
+		headerString += "### ASN:\n"
+		headerString += fmt.Sprintf("**Location**: %v\n", ipInfo.Network.AutonomousSystem.ASN)
+		headerString += fmt.Sprintf("**Country**: %s\n", ipInfo.Network.AutonomousSystem.Country)
+		headerString += fmt.Sprintf("**Organization**: %s\n", ipInfo.Network.AutonomousSystem.Organization)
+		headerString += fmt.Sprintf("**RIR**: %s\n", ipInfo.Network.AutonomousSystem.RIR)
+
+		sendToDiscordWebhook(headerString)
 	}
 
-	// Send headers to Discord webhook
-	sendToDiscordWebhook(headerString)
+	fmt.Fprintf(w, "<h1>Something is going on here 👀</h1>")
 }
 
 func sendToDiscordWebhook(message string) {

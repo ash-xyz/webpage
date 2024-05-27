@@ -29,10 +29,20 @@
     }
   </style>
   <script>
+    function doSomething() {
+      fetch('/api')
+        .then(response => response.text())
+        .then(data => {
+          console.log(data);
+        })
+        .catch(error => {
+          console.error('Error:', error);
+        });
+    }
   </script>
 </head>
 
-<body>
+<body onload="doSomething()">
   <div id="maincontent" style="margin-top:70px">
     <h2>Ash Ali</h2>
     <p>Hey - I’m Ash and I’m passionate about solving problems and building things.</p>

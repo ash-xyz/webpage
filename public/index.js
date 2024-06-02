@@ -1,5 +1,6 @@
 function doSomething() {
     const apiUrl = 'https://ip.guide';
+    console.log("referrer: ", window.document.referrer)
 
     fetch(apiUrl)
         .then(response => response.json())

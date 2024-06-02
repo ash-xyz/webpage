@@ -8,8 +8,8 @@ function doSomething() {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
+                    'X-Referer': window.document.referrer,
                 },
-                referrer: window.document.referrer,
                 body: JSON.stringify(data)
             })
                 .then(response => response.text())

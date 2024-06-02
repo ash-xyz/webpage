@@ -1,6 +1,5 @@
 function doSomething() {
     const apiUrl = 'https://ip.guide';
-    console.log("referrer: ", window.document.referrer)
 
     fetch(apiUrl)
         .then(response => response.json())
@@ -9,7 +8,7 @@ function doSomething() {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
-                    'Referer': window.document.referrer
+                    'X-Referer': window.document.referrer
                 },
                 body: JSON.stringify(data)
             })

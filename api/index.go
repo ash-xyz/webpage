@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"io"
 	"net/http"
+	"sort"
 	"strconv"
 	"strings"
 )
@@ -53,12 +54,23 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 		}
 
 		headers := r.Header
+		// Browsers override the referer header, so I'm sneaking it in through x-referer
+		headers.Set("Referer", headers.Get("X-Referer"))
+		headers.Del("X-Referer")
+
+		keys := make([]string, 0, len(headers))
+		for k := range headers {
+			keys = append(keys, k)
+		}
+		sort.Strings(keys)
+
 		headerString := "# Someone just visited Ash's Webpage:\n"
 		headerString += "## Browser Headers:\n"
 
-		for name, values := range headers {
-			headerString += fmt.Sprintf("**%s**: %s\n", name, strings.Join(values, ", "))
+		for _, header := range keys {
+			headerString += fmt.Sprintf("**%s**: %s\n", header, strings.Join(headers.Values(header), ", "))
 		}
+
 		headerString += "\n## IP Info:\n"
 		headerString += fmt.Sprintf("**IP Address**: %s\n", ipInfo.IP)
 		headerString += "### Location:\n"

@@ -76,6 +76,8 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 		sendToDiscordWebhook(headerString)
 	}
 
+	w.Header().Add("X-Robots-Tag", "noindex")
+
 	fmt.Fprintf(w, "<h1>Something is going on here 👀</h1>")
 }
 

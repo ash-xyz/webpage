@@ -55,8 +55,10 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 
 		headers := r.Header
 		// Browsers override the referer header, so I'm sneaking it in through x-referer
-		headers.Set("Referer", headers.Get("X-Referer"))
-		headers.Del("X-Referer")
+		if headers.Get("X-Referer") != "" {
+			headers.Set("Referer", headers.Get("X-Referer"))
+			headers.Del("X-Referer")
+		}
 
 		keys := make([]string, 0, len(headers))
 		for k := range headers {

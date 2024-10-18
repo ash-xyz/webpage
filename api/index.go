@@ -13,6 +13,8 @@ import (
 
 const DISCORD_WEBHOOK = "https://discord.com/api/webhooks/1241194659707883581/VhrvP7ZevGK4Tx0ZUOhsdCgP6F9cM0ELS_376IQ69c-30d6Y9QvX0IBJlOW_kanuev79"
 
+var botCount = 0
+
 type IPInfo struct {
 	IP       string   `json:"ip"`
 	Location Location `json:"location"`
@@ -40,7 +42,10 @@ type AutonomousSystem struct {
 }
 
 func Handler(w http.ResponseWriter, r *http.Request) {
-	if r.Method == "POST" {
+	if IsCrawler(r.Header.Get("User-Agent")) {
+		sendToDiscordWebhook(fmt.Sprintf("### %v bots 🤖.", botCount))
+		botCount++
+	} else if r.Method == "POST" {
 		var ipInfo IPInfo
 		body, err := io.ReadAll(r.Body)
 		if err != nil {

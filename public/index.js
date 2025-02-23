@@ -51,7 +51,7 @@ function updateSpotifyUI(data) {
         currentTrack.appendChild(document.createTextNode(' - '));
         currentTrack.appendChild(artistLink);
     } else {
-        currentTrack.textContent = 'Nothing playing right now';
+        currentTrack.textContent = "I'm not playing any music right now, check back later";
     }
 
     // Update top artists

@@ -13,7 +13,7 @@ function initializeSpotifyData() {
 
 // Function to fetch data from Spotify API
 async function fetchSpotifyData() {
-    const spotify = 'https://spotify-ash-xyz.fly.dev/api';
+    const spotify = 'https://spotify.ash.xyz/api';
     try {
         const response = await fetch(spotify);
         if (!response.ok) {

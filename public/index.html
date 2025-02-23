@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="UTF-8">
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; font-src 'self' data:; style-src 'self' 'sha256-LZPFZX3fRO9mw/C+mAlNRcEbLZuhQGBuDaCR1MRj0hM=' 'sha256-QwZRIAM4isjn5YMxQLhKAZDCDeCz12tvEQHSyEigEws='; script-src 'self'; connect-src 'self' https://ip.guide; base-uri 'self'; form-action 'self'; upgrade-insecure-requests; block-all-mixed-content">
+  <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self'; font-src 'self' data:; style-src 'self' 'sha256-LZPFZX3fRO9mw/C+mAlNRcEbLZuhQGBuDaCR1MRj0hM=' 'sha256-QwZRIAM4isjn5YMxQLhKAZDCDeCz12tvEQHSyEigEws='; script-src 'self'; connect-src 'self' https://ip.guide http://localhost:* ; base-uri 'self'; form-action 'self'; upgrade-insecure-requests; block-all-mixed-content"> -->
   <link rel="icon" href="me.png">
   <title>Ash Ali's Webpage</title>
   <style>
@@ -36,6 +36,7 @@
 <body>
   <div id="maincontent" style="margin-top:70px">
     <h2>Ash Ali</h2>
+    <h3>A little about me</h3>
     <p>Hey - I’m Ash and I’m passionate about solving problems and building things.</p>
 
     In that spirit, I want to create software that feels light and intuitive, and that brings joy to the people who
@@ -61,6 +62,34 @@
       I’ll try to write more often about my experiences but until then, I’m always happy to chat!
     </p>
     Feel free to reach out at <a href="mailto:contact@ash.xyz">contact@ash.xyz</a>
+    
+    
+    <h3>What I'm listenting to</h3>
+
+    I listen to a lot of music, admittedly a bit hapazardly - here's what spotify says I've been listening to for the last 3 months.
+    
+    <div id="spotify-section">
+      <div id="currently-playing">
+        <h4>Currently Playing</h4>
+        <p id="current-track">Loading...</p>
+      </div>
+      
+      <div id="top-artists">
+        <h4>Top Artists</h4>
+        <ul id="artists-list"></ul>
+      </div>
+
+      <div id="top-songs">
+        <h4>Top Songs</h4>
+        <ul id="songs-list"></ul>
+      </div>
+    </div>
+
+    <p>
+      Feel free to suggest music or follow me on spotify!
+    </p>
+
+    <h3>Some recent projects</h3>
   </div>
 </body>
 

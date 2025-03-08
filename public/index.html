@@ -1,97 +1,101 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
+    <head>
+        <meta charset="UTF-8" />
+        <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self'; font-src 'self' data:; style-src 'self' 'sha256-LZPFZX3fRO9mw/C+mAlNRcEbLZuhQGBuDaCR1MRj0hM=' 'sha256-QwZRIAM4isjn5YMxQLhKAZDCDeCz12tvEQHSyEigEws='; script-src 'self'; connect-src 'self' https://ip.guide http://localhost:* ; base-uri 'self'; form-action 'self'; upgrade-insecure-requests; block-all-mixed-content"> -->
+        <link rel="icon" href="me.png" />
+        <title>Ash Ali's Webpage</title>
+        <style>
+            @font-face {
+                font-family: "CustomFont";
+                src: url("font.otf") format("truetype");
+            }
 
-<head>
-  <meta charset="UTF-8">
-  <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self'; font-src 'self' data:; style-src 'self' 'sha256-LZPFZX3fRO9mw/C+mAlNRcEbLZuhQGBuDaCR1MRj0hM=' 'sha256-QwZRIAM4isjn5YMxQLhKAZDCDeCz12tvEQHSyEigEws='; script-src 'self'; connect-src 'self' https://ip.guide http://localhost:* ; base-uri 'self'; form-action 'self'; upgrade-insecure-requests; block-all-mixed-content"> -->
-  <link rel="icon" href="me.png">
-  <title>Ash Ali's Webpage</title>
-  <style>
-    @font-face {
-      font-family: 'CustomFont';
-      src: url('font.otf') format('truetype');
-    }
+            body {
+                font-family: "CustomFont", sans-serif;
+                line-height: 1.4;
+                font-size: 14px;
+                padding: 0 10px;
+                margin: 50px auto;
+                max-width: 650px;
+            }
 
-    body {
-      font-family: 'CustomFont', sans-serif;
-      line-height: 1.4;
-      font-size: 14px;
-      padding: 0 10px;
-      margin: 50px auto;
-      max-width: 650px;
-    }
+            #maincontent {
+                max-width: 42em;
+                margin: 15 auto;
+            }
 
-    #maincontent {
-      max-width: 42em;
-      margin: 15 auto;
-    }
+            a {
+                color: #66b2a6;
+            }
+        </style>
+        <script src="index.js"></script>
+    </head>
 
-    a {
-      color: #66b2a6;
-    }
-  </style>
-  <script src="index.js"></script>
-</head>
+    <body>
+        <div id="maincontent" style="margin-top: 70px">
+            <h2>Ash Ali</h2>
+            <h3>A little about me</h3>
+            <p>
+                Hey - I’m Ash and I’m passionate about solving problems and
+                building things.
+            </p>
 
-<body>
-  <div id="maincontent" style="margin-top:70px">
-    <h2>Ash Ali</h2>
-    <h3>A little about me</h3>
-    <p>Hey - I’m Ash and I’m passionate about solving problems and building things.</p>
+            In that spirit, I want to create software that feels light and
+            intuitive, and that brings joy to the people who use it(however
+            little).
 
-    In that spirit, I want to create software that feels light and intuitive, and that brings joy to the people who
-    use it(however little).
+            <p>In the past, I was</p>
+            <ul>
+                <li>a student at UCD,</li>
+                <li>President of Netsoc - UCD’s Computer Science Society,</li>
+                <li>an intern at Bloomberg, Stripe and Toast.</li>
+            </ul>
+            These days I’m a Software Engineer at Stripe, on the Secure
+            Frameworks team where I’m learning, exploring, and building all
+            things Web Security.
+            <p>
+                Outside of work I find pleasure in baking, reading, walking, and
+                travelling whenever possible.
+            </p>
 
-    <p> In the past, I was</p>
-    <ul>
-      <li>a student at UCD,</li>
-      <li>President of Netsoc - UCD’s Computer Science Society,</li>
-      <li>an intern at Bloomberg, Stripe and Toast.</li>
+            At some point, I’d like to get into research and academia, but for
+            now I’m happy to be working on interesting problems with great
+            people. (That being said, if you have any interesting research
+            ideas, or projects, I’d love to hear them!)
+            <p>
+                I’ll try to write more often about my experiences but until
+                then, I’m always happy to chat!
+            </p>
+            Feel free to reach out at
+            <a href="mailto:hello@ash.xyz">hello@ash.xyz</a>
 
-    </ul>
-    These days I’m a Software Engineer at Stripe, on the Secure Frameworks team where I’m learning, exploring, and
-    building all things Web Security.
-    <p>
-      Outside of work I find pleasure in baking, reading, walking, and travelling whenever possible.
-    </p>
+            <h3>What I'm listenting to</h3>
 
-    At some point, I’d like to get into research and academia, but for now I’m happy to be working on interesting
-    problems with great people. (That being said, if you have any interesting research ideas, or projects, I’d love
-    to hear them!)
-    <p>
-      I’ll try to write more often about my experiences but until then, I’m always happy to chat!
-    </p>
-    Feel free to reach out at <a href="mailto:contact@ash.xyz">contact@ash.xyz</a>
-    
-    
-    <h3>What I'm listenting to</h3>
+            I listen to a lot of music, admittedly a bit hapazardly - here's
+            what spotify says I've been listening to for the last 3 months.
 
-    I listen to a lot of music, admittedly a bit hapazardly - here's what spotify says I've been listening to for the last 3 months.
-    
-    <div id="spotify-section">
-      <div id="currently-playing">
-        <h4>Currently Playing</h4>
-        <p id="current-track">Loading...</p>
-      </div>
-      
-      <div id="top-artists">
-        <h4>Top Artists</h4>
-        <ul id="artists-list"></ul>
-      </div>
+            <div id="spotify-section">
+                <div id="currently-playing">
+                    <h4>Currently Playing</h4>
+                    <p id="current-track">Loading...</p>
+                </div>
 
-      <div id="top-songs">
-        <h4>Top Songs</h4>
-        <ul id="songs-list"></ul>
-      </div>
-    </div>
+                <div id="top-artists">
+                    <h4>Top Artists</h4>
+                    <ul id="artists-list"></ul>
+                </div>
 
-    <p>
-      Feel free to suggest music!
-    </p>
+                <div id="top-songs">
+                    <h4>Top Songs</h4>
+                    <ul id="songs-list"></ul>
+                </div>
+            </div>
 
-    <h3>Some recent projects</h3>
-    ...
-  </div>
-</body>
+            <p>Feel free to suggest music!</p>
 
+            <h3>Some recent projects</h3>
+            ...
+        </div>
+    </body>
 </html>

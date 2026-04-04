@@ -2,6 +2,7 @@
 <html>
     <head>
         <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta
             http-equiv="Content-Security-Policy"
             content="default-src 'self'; font-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self' https://analytics.ash.town; connect-src 'self' https://spotify.ash.xyz https://analytics.ash.town; base-uri 'self'; form-action 'self'; upgrade-insecure-requests; block-all-mixed-content"
@@ -17,7 +18,8 @@
             body {
                 font-family: "CustomFont", sans-serif;
                 line-height: 1.4;
-                font-size: 14px;
+                font-size: 16px;
+                color: #2c2c2c;
                 padding: 0 10px;
                 margin: 50px auto;
                 max-width: 650px;
@@ -30,6 +32,28 @@
 
             a {
                 color: #66b2a6;
+                text-decoration: none;
+            }
+
+            a:hover {
+                text-decoration: underline;
+            }
+
+            @media (min-width: 481px) {
+                body {
+                    font-size: 14px;
+                }
+            }
+
+            @media (max-width: 480px) {
+                body {
+                    margin: 20px auto;
+                    padding: 0 16px;
+                }
+
+                #maincontent {
+                    margin-top: 0;
+                }
             }
         </style>
         <script src="index.js"></script>
@@ -41,7 +65,7 @@
     </head>
 
     <body>
-        <div id="maincontent" style="margin-top: 70px">
+        <div id="maincontent">
             <h2>Ash Ali</h2>
             <h3>A little about me</h3>
             <p>
@@ -49,9 +73,11 @@
                 building things.
             </p>
 
-            In that spirit, I want to create software that feels light and
-            intuitive, and that brings joy to the people who use it(however
-            little).
+            <p>
+                In that spirit, I want to create software that feels light and
+                intuitive, and that brings joy to the people who use it
+                (however little).
+            </p>
 
             <p>In the past, I was</p>
             <ul>
@@ -59,29 +85,37 @@
                 <li>President of Netsoc - UCD’s Computer Science Society,</li>
                 <li>an intern at Bloomberg, Stripe and Toast.</li>
             </ul>
-            These days I’m a Software Engineer at Stripe, on the Secure
-            Frameworks team where I’m learning, exploring, and building all
-            things Web Security.
+            <p>
+                These days I’m a Software Engineer at Stripe, on the Secure
+                Frameworks team where I’m learning, exploring, and building all
+                things Web Security.
+            </p>
             <p>
                 Outside of work I find pleasure in baking, reading, walking, and
                 travelling whenever possible.
             </p>
 
-            At some point, I’d like to get into research and academia, but for
-            now I’m happy to be working on interesting problems with great
-            people. (That being said, if you have any interesting research
-            ideas, or projects, I’d love to hear them!)
+            <p>
+                At some point, I’d like to get into research and academia, but for
+                now I’m happy to be working on interesting problems with great
+                people. (That being said, if you have any interesting research
+                ideas, or projects, I’d love to hear them!)
+            </p>
             <p>
                 I’ll try to write more often about my experiences but until
                 then, I’m always happy to chat!
             </p>
-            Feel free to reach out at
-            <a href="mailto:hello@ash.xyz">hello@ash.xyz</a>
+            <p>
+                Feel free to reach out at
+                <a href="mailto:hello@ash.xyz">hello@ash.xyz</a>
+            </p>
 
             <h3>What I'm listening to</h3>
 
-            I listen to a lot of music, admittedly a bit haphazardly - here's
-            what spotify says I've been listening to for the last 3 months.
+            <p>
+                I listen to a lot of music, admittedly a bit haphazardly - here's
+                what spotify says I've been listening to for the last 3 months.
+            </p>
 
             <div id="spotify-section">
                 <div id="currently-playing">

@@ -119,8 +119,15 @@ function updateErrorState() {
   currentTrack.textContent = "Unable to load Spotify data";
 
   const artistsList = document.getElementById("artists-list");
+  artistsList.textContent = "";
+  const artistsError = document.createElement("li");
+  artistsError.textContent = "Failed to load artists";
+  artistsList.appendChild(artistsError);
+
   const songsList = document.getElementById("songs-list");
-  artistsList.innerHTML = "<li>Failed to load artists</li>";
-  songsList.innerHTML = "<li>Failed to load songs</li>";
+  songsList.textContent = "";
+  const songsError = document.createElement("li");
+  songsError.textContent = "Failed to load songs";
+  songsList.appendChild(songsError);
 }
 

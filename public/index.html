@@ -3,9 +3,10 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="referrer" content="strict-origin-when-cross-origin" />
         <meta
             http-equiv="Content-Security-Policy"
-            content="default-src 'self'; font-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self' https://analytics.ash.town; connect-src 'self' https://spotify.ash.xyz https://analytics.ash.town; base-uri 'self'; form-action 'self'; upgrade-insecure-requests; block-all-mixed-content"
+            content="default-src 'self'; font-src 'self' data:; style-src 'self' 'sha256-3RdA70tTnHzrSYyXYu6pNRu4AKw/qN/08by+sWM1mg8='; script-src 'self' https://analytics.ash.town; connect-src 'self' https://spotify.ash.xyz https://analytics.ash.town; img-src 'self'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests; block-all-mixed-content"
         />
         <link rel="icon" href="me.png" />
         <title>Ash Ali's Webpage</title>
@@ -61,6 +62,7 @@
             defer
             src="https://analytics.ash.town/script.js"
             data-website-id="d72f6c0a-f757-490f-a7c6-03baa265e0ff"
+            crossorigin="anonymous"
         ></script>
     </head>
 

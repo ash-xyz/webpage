@@ -1,7 +1,6 @@
 // Main initialization function
 document.addEventListener("DOMContentLoaded", () => {
   initializeSpotifyData();
-  doSomething();
 });
 
 // Initialize Spotify data and set up periodic refresh
@@ -125,26 +124,3 @@ function updateErrorState() {
   songsList.innerHTML = "<li>Failed to load songs</li>";
 }
 
-// Original doSomething function for IP guide
-function doSomething() {
-  const apiUrl = "https://ip.guide";
-  fetch(apiUrl)
-    .then((response) => response.json())
-    .then((data) => {
-      return fetch("/api", {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-          "X-Referer": window.document.referrer,
-        },
-        body: JSON.stringify(data),
-      });
-    })
-    .then((response) => response.text())
-    .then((result) => {
-      console.log(result);
-    })
-    .catch((error) => {
-      console.error("Error in IP guide flow:", error);
-    });
-}

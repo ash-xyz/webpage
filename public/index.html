@@ -2,13 +2,16 @@
 <html>
     <head>
         <meta charset="UTF-8" />
-        <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self'; font-src 'self' data:; style-src 'self' 'sha256-LZPFZX3fRO9mw/C+mAlNRcEbLZuhQGBuDaCR1MRj0hM=' 'sha256-QwZRIAM4isjn5YMxQLhKAZDCDeCz12tvEQHSyEigEws='; script-src 'self'; connect-src 'self' https://ip.guide http://localhost:* ; base-uri 'self'; form-action 'self'; upgrade-insecure-requests; block-all-mixed-content"> -->
+        <meta
+            http-equiv="Content-Security-Policy"
+            content="default-src 'self'; font-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self' https://analytics.ash.town; connect-src 'self' https://spotify.ash.xyz https://analytics.ash.town; base-uri 'self'; form-action 'self'; upgrade-insecure-requests; block-all-mixed-content"
+        />
         <link rel="icon" href="me.png" />
         <title>Ash Ali's Webpage</title>
         <style>
             @font-face {
                 font-family: "CustomFont";
-                src: url("font.otf") format("truetype");
+                src: url("font.otf") format("opentype");
             }
 
             body {
@@ -22,7 +25,7 @@
 
             #maincontent {
                 max-width: 42em;
-                margin: 15 auto;
+                margin: 15px auto;
             }
 
             a {
@@ -30,6 +33,11 @@
             }
         </style>
         <script src="index.js"></script>
+        <script
+            defer
+            src="https://analytics.ash.town/script.js"
+            data-website-id="d72f6c0a-f757-490f-a7c6-03baa265e0ff"
+        ></script>
     </head>
 
     <body>
@@ -70,9 +78,9 @@
             Feel free to reach out at
             <a href="mailto:hello@ash.xyz">hello@ash.xyz</a>
 
-            <h3>What I'm listenting to</h3>
+            <h3>What I'm listening to</h3>
 
-            I listen to a lot of music, admittedly a bit hapazardly - here's
+            I listen to a lot of music, admittedly a bit haphazardly - here's
             what spotify says I've been listening to for the last 3 months.
 
             <div id="spotify-section">

@@ -79,6 +79,12 @@ function updateCurrentTrack(currentlyPlaying) {
     } else {
       currentTrack.appendChild(songLink);
     }
+
+    // Spotify keeps returning the track after you hit pause, so without this
+    // it reads as though I'm still listening to it.
+    if (currentlyPlaying.is_playing === false) {
+      currentTrack.appendChild(document.createTextNode(" (paused)"));
+    }
   } else {
     currentTrack.textContent =
       "I'm not playing any music right now, check back later";

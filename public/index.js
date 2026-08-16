@@ -3,18 +3,22 @@ document.addEventListener("DOMContentLoaded", () => {
   initializeSpotifyData();
 });
 
+const SPOTIFY_API = "https://spotify.ash.xyz";
+const NOW_PLAYING_INTERVAL = 5000;
+
 // Initialize Spotify data and set up periodic refresh
 function initializeSpotifyData() {
+  // The top charts move on the order of days, so they're fetched once per load.
+  // The first fetch fills in the current track too, which is then kept live on
+  // its own much cheaper endpoint.
   fetchSpotifyData();
-  // Refresh data every 30 seconds
-  setInterval(fetchSpotifyData, 30000);
+  setInterval(fetchNowPlaying, NOW_PLAYING_INTERVAL);
 }
 
 // Function to fetch data from Spotify API
 async function fetchSpotifyData() {
-  const spotify = "https://spotify.ash.xyz/api";
   try {
-    const response = await fetch(spotify);
+    const response = await fetch(`${SPOTIFY_API}/api`);
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
     }
@@ -23,6 +27,23 @@ async function fetchSpotifyData() {
   } catch (error) {
     console.error("Error fetching data from Spotify API:", error);
     updateErrorState();
+  }
+}
+
+// Function to fetch just the current track, polled far more often than the
+// charts because it's the only part that changes while the page is open
+async function fetchNowPlaying() {
+  try {
+    const response = await fetch(`${SPOTIFY_API}/api/now-playing`);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const currentlyPlaying = await response.json();
+    updateCurrentTrack(currentlyPlaying);
+  } catch (error) {
+    // Leave the last known track on screen. A single failed poll shouldn't
+    // blank out what was playing a few seconds ago.
+    console.error("Error fetching currently playing from Spotify API:", error);
   }
 }
 
@@ -36,14 +57,14 @@ function createLinkElement(text, href) {
   return link;
 }
 
-// Function to update the UI with Spotify data
-function updateSpotifyUI(data) {
-  // Update currently playing
+// Function to update the currently playing track. Takes the currently_playing
+// object, which is null when nothing is playing.
+function updateCurrentTrack(currentlyPlaying) {
   const currentTrack = document.getElementById("current-track");
   currentTrack.innerHTML = ""; // Clear existing content
 
-  if (data.currently_playing && data.currently_playing.track) {
-    const track = data.currently_playing.track;
+  if (currentlyPlaying && currentlyPlaying.track) {
+    const track = currentlyPlaying.track;
     const songLink = createLinkElement(track.name, track.spotify_url || "#");
 
     // Handle multiple artists with null checks
@@ -62,6 +83,11 @@ function updateSpotifyUI(data) {
     currentTrack.textContent =
       "I'm not playing any music right now, check back later";
   }
+}
+
+// Function to update the UI with Spotify data
+function updateSpotifyUI(data) {
+  updateCurrentTrack(data.currently_playing);
 
   // Update top artists
   const artistsList = document.getElementById("artists-list");

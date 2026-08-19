@@ -6,13 +6,56 @@ document.addEventListener("DOMContentLoaded", () => {
 const SPOTIFY_API = "https://spotify.ash.xyz";
 const NOW_PLAYING_INTERVAL = 5000;
 
+// The API caches currently playing for 5 seconds, which bounds how stale a
+// response can honestly be. fetched_at_ms comes from the server's clock, so
+// comparing it against ours mixes two clocks — a visitor whose clock is off by
+// minutes would otherwise see the counter fly off. Clamping caps how far wrong
+// that can go at the width of the cache window.
+const MAX_STALENESS_MS = 6000;
+
+// Below this much disagreement, keep our own clock running instead of snapping
+// to the reported figure. Cache age differs from one response to the next, so
+// re-anchoring every poll makes the seconds visibly stutter back and forth.
+const RESYNC_THRESHOLD_MS = 1500;
+
+let nowPlaying = null;
+// Where playback was, and when we knew it. Measured with performance.now(),
+// which is monotonic, so this survives the system clock changing mid-track.
+let anchor = null;
+let renderedKey = null;
+let tickTimer = null;
+let pollTimer = null;
+
 // Initialize Spotify data and set up periodic refresh
 function initializeSpotifyData() {
   // The top charts move on the order of days, so they're fetched once per load.
   // The first fetch fills in the current track too, which is then kept live on
   // its own much cheaper endpoint.
   fetchSpotifyData();
-  setInterval(fetchNowPlaying, NOW_PLAYING_INTERVAL);
+  startPolling();
+
+  // Nothing worth polling or ticking for a tab nobody is looking at. Coming
+  // back resyncs, so the counter doesn't resume from a stale figure.
+  document.addEventListener("visibilitychange", () => {
+    if (document.hidden) {
+      stopPolling();
+      stopTicking();
+      return;
+    }
+
+    fetchNowPlaying();
+    startPolling();
+  });
+}
+
+function startPolling() {
+  stopPolling();
+  pollTimer = setInterval(fetchNowPlaying, NOW_PLAYING_INTERVAL);
+}
+
+function stopPolling() {
+  clearInterval(pollTimer);
+  pollTimer = null;
 }
 
 // Function to fetch data from Spotify API
@@ -60,35 +103,165 @@ function createLinkElement(text, href) {
 // Function to update the currently playing track. Takes the currently_playing
 // object, which is null when nothing is playing.
 function updateCurrentTrack(currentlyPlaying) {
+  if (!currentlyPlaying || !currentlyPlaying.track) {
+    nowPlaying = null;
+    anchor = null;
+    renderedKey = null;
+    stopTicking();
+
+    const currentTrack = document.getElementById("current-track");
+    currentTrack.innerHTML = "";
+    currentTrack.textContent =
+      "I'm not playing any music right now, check back later";
+    return;
+  }
+
+  const key = trackKey(currentlyPlaying);
+  const reported = anchorFrom(currentlyPlaying);
+
+  // Re-anchor on a new track or a play/pause change, and otherwise only once
+  // our own clock has drifted noticeably from what the server reports.
+  if (
+    !anchor ||
+    key !== renderedKey ||
+    Math.abs(currentProgressMs() - reported.progressMs) > RESYNC_THRESHOLD_MS
+  ) {
+    anchor = reported;
+  }
+
+  nowPlaying = currentlyPlaying;
+
+  // Rebuilding the line every poll would recreate the links underneath the
+  // cursor, so it only happens when what it says actually changes.
+  if (key !== renderedKey) {
+    renderTrackLine(currentlyPlaying);
+    renderedKey = key;
+  }
+
+  renderTime();
+  scheduleTick();
+}
+
+// trackKey changes whenever the line needs rebuilding: a different track, or
+// the same one pausing or resuming.
+function trackKey(currentlyPlaying) {
+  const track = currentlyPlaying.track;
+  const id = track.spotify_url || track.name || "";
+
+  return `${id}|${currentlyPlaying.is_playing !== false}`;
+}
+
+// anchorFrom converts a response into a local starting point for the counter.
+function anchorFrom(currentlyPlaying) {
+  const playing = currentlyPlaying.is_playing !== false;
+  let staleness = 0;
+
+  // A paused track hasn't moved on while the response sat in cache, so only
+  // playback gets the correction.
+  if (playing && Number.isFinite(currentlyPlaying.fetched_at_ms)) {
+    const age = Date.now() - currentlyPlaying.fetched_at_ms;
+    staleness = Math.min(Math.max(age, 0), MAX_STALENESS_MS);
+  }
+
+  return {
+    progressMs: (currentlyPlaying.progress_ms || 0) + staleness,
+    at: performance.now(),
+  };
+}
+
+function currentProgressMs() {
+  if (!anchor) {
+    return 0;
+  }
+
+  const playing = nowPlaying ? nowPlaying.is_playing !== false : false;
+  const duration = trackDurationMs();
+  const progress = anchor.progressMs + (playing ? performance.now() - anchor.at : 0);
+
+  return duration ? Math.min(progress, duration) : progress;
+}
+
+function trackDurationMs() {
+  return nowPlaying && nowPlaying.track ? nowPlaying.track.duration_ms || 0 : 0;
+}
+
+function renderTrackLine(currentlyPlaying) {
   const currentTrack = document.getElementById("current-track");
   currentTrack.innerHTML = ""; // Clear existing content
 
-  if (currentlyPlaying && currentlyPlaying.track) {
-    const track = currentlyPlaying.track;
-    const songLink = createLinkElement(track.name, track.spotify_url || "#");
+  const track = currentlyPlaying.track;
+  const songLink = createLinkElement(track.name, track.spotify_url || "#");
 
-    // Handle multiple artists with null checks
-    if (track.artists && track.artists.length > 0) {
-      const artistNames = track.artists.map((artist) => artist.name).join(", ");
-      const firstArtistUrl = track.artists[0].spotify_url || "#";
-      const firstArtistLink = createLinkElement(artistNames, firstArtistUrl);
+  // Handle multiple artists with null checks
+  if (track.artists && track.artists.length > 0) {
+    const artistNames = track.artists.map((artist) => artist.name).join(", ");
+    const firstArtistUrl = track.artists[0].spotify_url || "#";
+    const firstArtistLink = createLinkElement(artistNames, firstArtistUrl);
 
-      currentTrack.appendChild(songLink);
-      currentTrack.appendChild(document.createTextNode(" - "));
-      currentTrack.appendChild(firstArtistLink);
-    } else {
-      currentTrack.appendChild(songLink);
-    }
-
-    // Spotify keeps returning the track after you hit pause, so without this
-    // it reads as though I'm still listening to it.
-    if (currentlyPlaying.is_playing === false) {
-      currentTrack.appendChild(document.createTextNode(" (paused)"));
-    }
+    currentTrack.appendChild(songLink);
+    currentTrack.appendChild(document.createTextNode(" - "));
+    currentTrack.appendChild(firstArtistLink);
   } else {
-    currentTrack.textContent =
-      "I'm not playing any music right now, check back later";
+    currentTrack.appendChild(songLink);
   }
+
+  // The time goes last so that proportional digits only ever nudge the end of
+  // the line, rather than shifting the artist name on every tick.
+  const time = document.createElement("span");
+  time.id = "track-time";
+  currentTrack.appendChild(time);
+
+  // Spotify keeps returning the track after you hit pause, so without this
+  // it reads as though I'm still listening to it.
+  if (currentlyPlaying.is_playing === false) {
+    currentTrack.appendChild(document.createTextNode(" (paused)"));
+  }
+}
+
+function renderTime() {
+  const time = document.getElementById("track-time");
+  if (!time) {
+    return;
+  }
+
+  // Podcasts and local files don't always report a length, and a position
+  // without one says nothing.
+  const duration = trackDurationMs();
+  time.textContent = duration
+    ? ` \u00b7 ${formatTime(currentProgressMs())} / ${formatTime(duration)}`
+    : "";
+}
+
+// scheduleTick lands each update just past the next whole second of playback,
+// rather than on a flat interval that drifts out of phase and makes the counter
+// skip a second or linger on one.
+function scheduleTick() {
+  stopTicking();
+
+  const playing = nowPlaying ? nowPlaying.is_playing !== false : false;
+  if (!playing || document.hidden || !trackDurationMs()) {
+    return;
+  }
+
+  const delay = 1000 - (currentProgressMs() % 1000);
+
+  tickTimer = setTimeout(() => {
+    renderTime();
+    scheduleTick();
+  }, delay);
+}
+
+function stopTicking() {
+  clearTimeout(tickTimer);
+  tickTimer = null;
+}
+
+function formatTime(ms) {
+  const totalSeconds = Math.max(0, Math.floor(ms / 1000));
+  const minutes = Math.floor(totalSeconds / 60);
+  const seconds = totalSeconds % 60;
+
+  return `${minutes}:${String(seconds).padStart(2, "0")}`;
 }
 
 // Function to update the UI with Spotify data
@@ -149,6 +322,7 @@ function updateSpotifyUI(data) {
 function updateErrorState() {
   const currentTrack = document.getElementById("current-track");
   currentTrack.textContent = "Unable to load Spotify data";
+  renderedKey = null;
 
   const artistsList = document.getElementById("artists-list");
   artistsList.textContent = "";

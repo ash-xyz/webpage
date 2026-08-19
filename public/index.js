@@ -111,8 +111,7 @@ function updateCurrentTrack(currentlyPlaying) {
 
     const currentTrack = document.getElementById("current-track");
     currentTrack.innerHTML = "";
-    currentTrack.textContent =
-      "I'm not playing any music right now, check back later";
+    currentTrack.textContent = "nothing ⛰️";
     return;
   }
 
@@ -228,7 +227,7 @@ function renderTime() {
   // without one says nothing.
   const duration = trackDurationMs();
   time.textContent = duration
-    ? ` \u00b7 ${formatTime(currentProgressMs())} / ${formatTime(duration)}`
+    ? ` · ${formatTime(currentProgressMs())} / ${formatTime(duration)}`
     : "";
 }
 

@@ -18,6 +18,16 @@ const MAX_STALENESS_MS = 6000;
 // re-anchoring every poll makes the seconds visibly stutter back and forth.
 const RESYNC_THRESHOLD_MS = 1500;
 
+// The charts are kept between visits, so a returning visitor sees them straight
+// away instead of waiting on the API. Currently playing is left out: an old
+// copy of it would show a track as live that may have ended hours ago.
+const CHARTS_STORAGE_KEY = "spotify-charts";
+const CHARTS_MAX_AGE_MS = 7 * 24 * 60 * 60 * 1000;
+
+// Requested as soon as this script runs in the head, rather than on
+// DOMContentLoaded, which also waits for the deferred analytics script.
+const spotifyDataRequest = requestSpotifyData();
+
 let nowPlaying = null;
 // Where playback was, and when we knew it. Measured with performance.now(),
 // which is monotonic, so this survives the system clock changing mid-track.
@@ -31,7 +41,8 @@ function initializeSpotifyData() {
   // The top charts move on the order of days, so they're fetched once per load.
   // The first fetch fills in the current track too, which is then kept live on
   // its own much cheaper endpoint.
-  fetchSpotifyData();
+  const showedSavedCharts = renderSavedCharts();
+  fetchSpotifyData(showedSavedCharts);
   startPolling();
 
   // Nothing worth polling or ticking for a tab nobody is looking at. Coming
@@ -58,18 +69,69 @@ function stopPolling() {
   pollTimer = null;
 }
 
-// Function to fetch data from Spotify API
-async function fetchSpotifyData() {
-  try {
-    const response = await fetch(`${SPOTIFY_API}/api`);
+function requestSpotifyData() {
+  const request = fetch(`${SPOTIFY_API}/api`).then((response) => {
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
     }
-    const data = await response.json();
+    return response.json();
+  });
+
+  // Nothing awaits this until the DOM is ready, and a failure before then
+  // shouldn't be reported as unhandled. Awaiting it later still throws.
+  request.catch(() => {});
+
+  return request;
+}
+
+// Function to render the data requested from the Spotify API
+async function fetchSpotifyData(showedSavedCharts) {
+  try {
+    const data = await spotifyDataRequest;
     updateSpotifyUI(data);
+    saveCharts(data);
   } catch (error) {
     console.error("Error fetching data from Spotify API:", error);
-    updateErrorState();
+    updateErrorState(showedSavedCharts);
+  }
+}
+
+// renderSavedCharts shows the charts from a previous visit, and reports
+// whether there were any recent enough to show.
+function renderSavedCharts() {
+  let saved;
+  try {
+    saved = JSON.parse(localStorage.getItem(CHARTS_STORAGE_KEY));
+  } catch {
+    // Storage can be blocked, and the page works fine without it.
+    return false;
+  }
+
+  if (!saved || !(Date.now() - saved.saved_at_ms < CHARTS_MAX_AGE_MS)) {
+    return false;
+  }
+
+  renderCharts(saved);
+  return true;
+}
+
+function saveCharts(data) {
+  // A partial response would overwrite good charts with an empty list.
+  if (!data.top_artists || !data.top_tracks) {
+    return;
+  }
+
+  try {
+    localStorage.setItem(
+      CHARTS_STORAGE_KEY,
+      JSON.stringify({
+        saved_at_ms: Date.now(),
+        top_artists: data.top_artists,
+        top_tracks: data.top_tracks,
+      }),
+    );
+  } catch {
+    // Full or blocked storage just means the next visit waits on the API.
   }
 }
 
@@ -266,7 +328,10 @@ function formatTime(ms) {
 // Function to update the UI with Spotify data
 function updateSpotifyUI(data) {
   updateCurrentTrack(data.currently_playing);
+  renderCharts(data);
+}
 
+function renderCharts(data) {
   // Update top artists
   const artistsList = document.getElementById("artists-list");
   artistsList.innerHTML = ""; // Clear existing list
@@ -317,11 +382,16 @@ function updateSpotifyUI(data) {
   }
 }
 
-// Function to update UI in case of error
-function updateErrorState() {
+// Function to update UI in case of error. Charts saved from a previous visit
+// are left up, since they're still a fair picture of what I listen to.
+function updateErrorState(keepCharts) {
   const currentTrack = document.getElementById("current-track");
   currentTrack.textContent = "Unable to load Spotify data";
   renderedKey = null;
+
+  if (keepCharts) {
+    return;
+  }
 
   const artistsList = document.getElementById("artists-list");
   artistsList.textContent = "";

@@ -57,6 +57,9 @@
                 }
             }
         </style>
+        <!-- crossorigin, because fetch() makes an anonymous CORS request and
+             wouldn't reuse a connection opened with credentials. -->
+        <link rel="preconnect" href="https://spotify.ash.xyz" crossorigin />
         <script src="index.js"></script>
         <script
             defer
